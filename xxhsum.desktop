@@ -1,0 +1,27 @@
+[Desktop Entry]
+Type=Service
+X-KDE-ServiceTypes=KonqPopupMenu/Plugin
+Icon=black_sum
+MimeType=all/allfiles;
+Actions=xxh64sum;xxh128sum;xxh64sum2file;xxh128sum2file;
+
+
+[Desktop Action xxh64sum]
+Name=xxHash 64 bit checksum
+Icon=black_sum
+Exec=$(raw="$(xxhsum -H64 "%f")" && hash="$(echo -n "$raw" | awk '{print $1}')" && file="$(basename "%f")" && $(kdialog --title "xxHash 64 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || true))
+
+[Desktop Action xxh128sum]
+Name=xxHash 128 bit checksum
+Icon=black_sum
+Exec=$(raw="$(xxhsum -H128 "%f")" && hash="$(echo -n "$raw" | awk '{print $1}')" && file="$(basename "%f")" && $(kdialog --title "xxHash 128 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || true))
+
+[Desktop Action xxh64sum2file]
+Name=xxHash 64 bit checksum to file
+Icon=black_sum
+Exec=xxhsum -H64 "%f" >> xxh64sums
+
+[Desktop Action xxh128sum2file]
+Name=xxHash 128 bit checksum to file
+Icon=black_sum
+Exec=xxhsum -H128 "%f" >> xxh128sums

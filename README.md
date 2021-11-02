@@ -2,6 +2,11 @@
 
 Create file checksum / hash using extremely fast xxHash algorithm. You can create 64 bit and 128 bit (new XXH3) hashes, and output it to the screen via dialog or write to a file.
 
+Supported languages: Dutch, English, Russian  
+Adding support for your language is very simple: just add `Name[xx]=…` for it in `.desktop` file and create a pull request :wink:
+
+---
+
 This project uses xxHash. Please, make sure `xxhash` package is installed. XXH3 became stable in version 0.8.0, so I recommend this version or newer.
 
 xxHash 0.8+ is available in Ubuntu 20.10+, Debian 11+, Fedora 32+, Arch, openSUSE Tumbleweed, etc.

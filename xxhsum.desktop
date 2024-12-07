@@ -11,25 +11,25 @@ Name=xxHash 64 bit checksum
 Name[nl]=xxHash 64-bit-controlesom
 Name[ru]=Контрольная сумма xxHash 64 бит
 Icon=black_sum
-Exec=(raw="$(xxhsum -H64 "%f")" && hash="$(echo -n "$raw" | awk '{print $1}')" && file="$(basename "%f")" && (kdialog --title "xxHash 64 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || true))
+Exec=(raw="$(xxhsum -H64 "%f")" && hash="$(echo -n "$raw" | awk '{ print $1 }')" && file="$(basename "%f")" && (kdialog --title "xxHash 64 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || :))
 
 [Desktop Action xxh128sum]
 Name=xxHash 128 bit checksum
 Name[nl]=xxHash 128-bit-controlesom
 Name[ru]=Контрольная сумма xxHash 128 бит
 Icon=black_sum
-Exec=(raw="$(xxhsum -H128 "%f")" && hash="$(echo -n "$raw" | awk '{print $1}')" && file="$(basename "%f")" && (kdialog --title "xxHash 128 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || true))
+Exec=(raw="$(xxhsum -H128 "%f")" && hash="$(echo -n "$raw" | awk '{ print $1 }')" && file="$(basename "%f")" && (kdialog --title "xxHash 128 bit" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || :))
 
 [Desktop Action xxh64sum2file]
 Name=xxHash 64 bit checksum to file
 Name[nl]=xxHash 64-bit-controlesom naar bestand
 Name[ru]=Контрольная сумма xxHash 64 бит в файл
 Icon=black_sum
-Exec=xxhsum -H64 "%f" >> xxh64sums
+Exec=xxhsum -H64 "%f" > "%f.xxh64"
 
 [Desktop Action xxh128sum2file]
 Name=xxHash 128 bit checksum to file
 Name[nl]=xxHash 128-bit-controlesom naar bestand
 Name[ru]=Контрольная сумма xxHash 128 бит в файл
 Icon=black_sum
-Exec=xxhsum -H128 "%f" >> xxh128sums
+Exec=xxhsum -H128 "%f" > "%f.xxh128"

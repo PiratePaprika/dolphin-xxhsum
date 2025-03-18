@@ -11,11 +11,11 @@ Name=xxHash 3 checksum
 Name[nl]=xxHash 3 controlesom
 Name[ru]=Контрольная сумма xxHash 3
 Icon=black_sum
-Exec=(raw="$(xxhsum -H3 --tag "%f")" && hash="$(echo -n "$raw" | awk '{ print $NF }')" && file="$(basename "%f")" && (kdialog --title "xxHash 3" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || :))
+Exec=(f=%f; raw="$(xxhsum -H3 --tag "$f")" && hash="$(echo -n "$raw" | awk '{ print $NF }')" && file="$(basename "$f")" && (kdialog --title "xxHash 3" --msgbox "<pre>Filename: ${file}\nChecksum: ${hash}</pre>" "<pre>Raw xxhsum output:\n</pre><code>${raw}</code>" || :))
 
 [Desktop Action xxh3sum2file]
 Name=xxHash 3 checksum to file
 Name[nl]=xxHash 3 controlesom naar bestand
 Name[ru]=Контрольная сумма xxHash 3 в файл
 Icon=black_sum
-Exec=(xxhsum -H3 --tag "%f" | sed -E 's/^XXH3 \\((.+)\\) = ([a-f0-9]+)$/XXH3_\\2  \\1/' > "%f.xxh3")
+Exec=(f=%f; xxhsum -H3 --tag "$f" | sed -E 's/^XXH3 \\((.+)\\) = ([a-f0-9]+)$/XXH3_\\2  \\1/' > "$f.xxh3")
